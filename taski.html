@@ -40,38 +40,88 @@
 <body>
 	<section class="zadanie">
 		<article class="task">
-			<h1>Wprowadzenie - do PDO</h1>
+			<h1>Połączenie do bazy danych mysql za pomocą biblioteki PDO </h1>
 			<p class="opiszadania">
 			1.  Biblioteka PDO (PHP Data Objects) to interfejs służący do komunikacji z bazami danych. Stanowi ona więc warstwę pośredniczącą pomiędzy programistą, a serwerem bazodanowym. PDO to nie tylko API do komunikacji z bazami, ale bardzo potężna klasa, której możliwości sięgają daleko dalej, niż tylko do tłumaczenia zapytań.<br>
 			2.  Połączenie z bazą polega na utworzeniu nowego objektu klasy PDO. 
-			Do konstruktora klasy podajemy parametry naszego połączenia jak pokazano w tej instrukcji do wykonania zadania. 
+			Do konstruktora klasy podajemy parametry naszego połączenia jak pokazano w tej instrukcji wykonania zadania. 
 			Należy jednak pamiętać, że rozszerzenie PDO dla PHP musi być zainstalowane i uruchomione w pliku php.ini.<br>
-			3. w dokumencie php.ini - należy odnaleźć i odkomentować linie: extension=pdo_mysql, aby możliwe było połaczenie przez tą klasę PDO<br> 
+			3. w dokumencie php.ini - należy odnaleźć i odkomentować linie: extension=pdo_mysql, aby możliwe było połaczenie przez tą klasę PDO<br>
+			4. W tym celu uruchamiamy xampp, moduł apache oraz mysql, dalej klikamy na "config" przy serwerze "Apache" i wybieramy PHP(php.ini) i modyfikujemy jak pokazano na obrazku<br> 
 			<img src="./img/Obraz1.png" alt=""><br>
+			5. Edycja i aktualizacja php.ini<br>
+			<img src="./img/Obraz2.png" alt=""><br>
 			</p>
 		</article>
 	</section>
 	<section class="zadanie">
 		<article class="task">
-			<h1></h1>
+			<h1>Tworzenie głównego dokumentu: index.php</h1>
 			<p class="opiszadania">
-			<img src="./img/Obraz1.png" alt=""><br>
+			1. Zakładamy nowy katalog "imienazwisko" w: C:\xampp\htdocs\imienazwisko<br>
+			2. Tworzymy dokument: index.html w katalogu C:\xampp\htdocs\imienazwisko\<br>  
+			<img src="./img/Obraz3.png" alt=""><br>
+			3. Tworzymy nową bazę danych w "http://localhost/phpmyadmin" "szkola" lub korzystamy z bazy wcześniej utworzonej z poprzedniego zadania<br>
+			4. Tworzymy nową tabele "uczniowie" w bazie "szkola" lub korzystamy z wcześniej utworzonej tabeli z poprzedniego zadania<br>
+			<img src="./img/Obraz4.png" alt=""><br>
 			</p>
 		</article>
 	</section>
 	<section class="zadanie">
 		<article class="task">
-			<h1></h1>
+			<h1>Tworzymy polaczenie.php - połączenie za pomocą metody PDO</h1>
 			<p class="opiszadania">
-			<img src="./img/Obraz1.png" alt=""><br>
+			1. Tworzymy plik polaczenie.php do tego samego folderu co index.php<br>
+			Dodajemy parametry połączenia<br>
+			<img src="./img/Obraz5.png" alt=""><br>
+			2. Aktualizujemy kod połączenia, proszę zwrócić uwagę na funkcję try{}catch(){}<br>
+			w pliku index.php proszę zdefiniować tą funkcję try{}catch(){} i opisać do czego służy, można użyć znacznika "div" i wnim opisać "try..catch" <br>
+			<img src="./img/Obraz6.png" alt=""><br>
+			3. Efekt finalny wykonania połączenia z uzyciem biblioteki PDO - uruchamiamy plik z localhost<br>
+			http://localhost/imienazwisko/polaczenie.php<br>
+			<img src="./img/Obraz7.png" alt=""><br>
 			</p>
 		</article>
 	</section>
 	<section class="zadanie">
 		<article class="task">
-			<h1></h1>
+			<h1>Aktualizacja index.php</h1>
 			<p class="opiszadania">
-			<img src="./img/Obraz1.png" alt=""><br>
+			1. Za pomocą funkcji include_once('polaczenie.php') dodaje połączenie do pliku index.php oraz po wykonaniu skryptu rozłączam aktualne połączenie<br>
+			<img src="./img/Obraz8.png" alt=""><br>
+			2. Aktualizuję index.php i dodaję zapytanie sql, pobieram z bazy danych imie,nazwisko,adres<br>
+			<img src="./img/Obraz9.png" alt=""><br>
+			3. Dodaje znacznik "table" aby poukładać w tabeli informacje pobrane z bazy danych, czyli każdy rekord w osobnym wierszu<br>
+			<img src="./img/Obraz10.png" alt=""><br>
+			4. Tworzymy na początku znacznika "body" formularz, z poziomu którego będziemy dodawać do bazy nowe rekordy<br>
+			formularz zawiera pola input: imie, nazwisko, adres<br>
+			<img src="./img/Obraz11.png" alt=""><br>
+			5. Dodajemy do index.php lokalny arkusz styli w sekcji "head", który formatuje tabelę oraz formularz<br>
+			<img src="./img/Obraz12.png" alt=""><br>
+			</p>
+		</article>
+	</section>
+	<section class="zadanie">
+		<article class="task">
+			<h1>Tworzymy dokument dodaj_do_bazy.php</h1>
+			<p class="opiszadania">
+			1. Dokument odbioru danych, posiadający skrypt dodania do bazy danych imie,nazwisko,adres z formularza(index.php)<br>
+			Uwaga w pliku index.php mamy atrybut: "action" a w nim "=dodaj_do_bazy.php" gdzie kierowane są zmienne z formularza<br>
+			<img src="./img/Obraz13.png" alt=""><br> 
+			2. Mała aktualizacja styli dla znacznika "div class='box'"<br>
+			<img src="./img/Obraz14.png" alt=""><br> 
+			3. Otrzymujemy taki widok w http://localhost/iminazwisko/<br>
+			<img src="./img/Obraz15.png" alt=""><br>
+			4. Edytujemy dodaj_do_bazy.php oraz dodajemy kod - pamiętamy o tym do czego służą zmienne superglobalne $_POST i $_GET<br>
+			<img src="./img/Obraz16.png" alt=""><br>
+			5. Wpisujemy w formularzu imie, nazwisko, adres i klikawy "dodaj", przekazaliśmy dane do pliku dodaj_do_bazy.php<br>
+			<img src="./img/Obraz17.png" alt=""><br>
+			6. Aktualizujemy kod w dodaj_do_bazy.php, oraz czytamy komentarze w dokumencie<br>
+			<img src="./img/Obraz18.png" alt=""><br>
+			7. Aktualizujemy dokument polaczenie.php o dodatkową funkcje "getMessage()" do identyfikacji błędów połączenia z PDO<br>
+			<img src="./img/Obraz19.png" alt=""><br>
+			8. Dodajemy kod do dodaj_do_bazy.php, czyli połaczenie do bazy, zapytanie "$dodaj_do_bazy", zapomocą funkcji exec() dodamy imie,nazwisko,adres do bazy danych, funkcja header() po dodaniu do bazy przekieruje nas z powrotem do index.php<br>
+			<img src="./img/Obraz20.png" alt=""><br> 
 			</p>
 		</article>
 	</section>
