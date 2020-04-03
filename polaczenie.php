@@ -10,7 +10,7 @@ try{
 	echo("<h1>Połączono z bazą danych</h1>");
 }catch(PDOException $e){
 	echo("<h1>Error połączenia z bazą danych</h1><br>");
-	echo($e.getMessage());
+	echo($e->getMessage());
 	die();//jak nie ma połączenia z bazą danych to rozłączam się...
 }
 
